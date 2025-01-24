@@ -1,0 +1,10 @@
+{
+    "shoppinglist" :[
+        {"id" :1 , "item": "Kenyér", "packaging": "500g"},
+        {"id" :2 , "item": "Tej", "packaging": "500ml"},
+        {"id" :3 , "item": "Őszibaracklé", "packaging": "1L"},
+        {"id" :4 , "item": "Vaj", "packaging": "250g"},
+        {"id" :5 , "item": "Sajt", "packaging": "150g"},
+        {"id" :6 , "item": "Kőbányai", "packaging": "500ml"}
+    ]
+}
