@@ -5,6 +5,7 @@ const boltStore = useBoltStore()
 
 <template>
   <h1 class="d-flex justify-content-center">Termékek</h1><br>
+  
 <div class="d-flex flex-wrap justify-content-center">
   
   <div v-for="item in boltStore.products" >
