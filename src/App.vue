@@ -1,27 +1,20 @@
 <script setup>
   import axios from "axios";
   import {ref, onMounted} from 'vue'
-  const shoppingList = ref([])
+  import { RouterLink, RouterView } from 'vue-router'
+  import { useBoltStore } from "./stores/counter.js";
+
+const boltStore = useBoltStore()
 
   onMounted(() =>{
-    axios.get("http://localhost:3000/shoppinglist")
-    .then(resp => {
-      console.log(resp.data)
-      shoppingList.value = resp.data
-  })
+    boltStore.loadAll()
   })
 </script>
 
 <template>
-  <h1 class="text-center">Bevásárlólista</h1>  
-  <div class="d-flex container">
-  <div v-for="item in shoppingList" class="d-flex flex-column container justify-content-between">
-    <div class="card mt-3" style="width: 18rem;">
-      <div class="card-body">
-    <h5 class="card-title">{{ item.id }}</h5>
-    <p class="card-text" >Tárgy: {{ item.item}}</p>
-    <p class="card-text">Kiszerelés: {{ item.packaging }}</p>  </div>
-</div>
-</div>
-  </div>
+  <nav>
+        <RouterLink to="/">Termékek</RouterLink>&nbsp;&nbsp;
+        <RouterLink to="/cart">Kosár</RouterLink>
+      </nav>
+  <RouterView />
 </template>
