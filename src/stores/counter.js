@@ -1,10 +1,12 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import Toast, { useToast } from "vue-toastification"
 import axios from 'axios'
 
 export const useBoltStore = defineStore('termekek', () => {
   const products = ref([])
   const cart = ref({})
+  const toast = useToast()
   const loadAll = () =>{
     fetch("http://localhost:3000/bolt")
     .then(resp => resp.json())
@@ -32,7 +34,10 @@ export const useBoltStore = defineStore('termekek', () => {
     //let id = Math.round(Math.random() *100000000)
     products.value.push(product)
     axios.post("http://localhost:3000/bolt", product)
-    .then(resp => console.log(resp.statusText))
+    .then(() => toast("Sikeres mentés"))
+    
+    .catch(() => toast("Nem jó!"))
+
   }
 
   return { products, loadAll, addToCart, cart, removeFromCart, saveProduct }
