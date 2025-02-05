@@ -36,7 +36,7 @@ export const useBoltStore = defineStore('termekek', () => {
     axios.post("http://localhost:3000/bolt", product)
     .then(() => toast("Sikeres mentés"))
     
-    .catch(() => toast("Nem jó!"))
+    .catch(() => toast.error("Nem jó!"))
 
   }
 
