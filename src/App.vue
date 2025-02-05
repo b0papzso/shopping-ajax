@@ -13,8 +13,9 @@ const boltStore = useBoltStore()
 
 <template>
   <nav>
-        <RouterLink to="/">Termékek</RouterLink>&nbsp;&nbsp;
-        <RouterLink to="/cart">Kosár</RouterLink>
+        <RouterLink to="/" class="btn btn-outline-success m-2">Termékek</RouterLink>
+        <RouterLink to="/cart" class="btn btn-outline-success m-2">Kosár</RouterLink>
+        <RouterLink to="/new" class="btn btn-outline-success m-2">Új termék hozzáadása</RouterLink>
       </nav>
   <RouterView />
 </template>

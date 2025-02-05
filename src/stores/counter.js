@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
 export const useBoltStore = defineStore('termekek', () => {
   const products = ref([])
@@ -22,7 +23,17 @@ export const useBoltStore = defineStore('termekek', () => {
   }
 
   const removeFromCart = (id) =>{
+    console.log(cart.value.find(p=>p.id == id))
     cart.value.splice((cart.value.find(p=>p.id == id)), 1)
   }
-  return { products, loadAll, addToCart, cart, removeFromCart }
+
+  const saveProduct = (product) =>{
+    console.log(product)
+    //let id = Math.round(Math.random() *100000000)
+    products.value.push(product)
+    axios.post("http://localhost:3000/bolt", product)
+    .then(resp => console.log(resp.statusText))
+  }
+
+  return { products, loadAll, addToCart, cart, removeFromCart, saveProduct }
 })
