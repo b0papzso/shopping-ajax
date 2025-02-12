@@ -159,6 +159,14 @@
       "desc": "50 db-os csomag darázs",
       "store": 7,
       "price": "10000"
+    },
+    {
+      "id": "7f75",
+      "name": "Sonka",
+      "unit": "Zacskó",
+      "desc": "Zacskós sonka",
+      "store": 15,
+      "price": "400"
     }
   ],
   "order": []
