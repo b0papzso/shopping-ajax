@@ -44,6 +44,7 @@ export const useBoltStore = defineStore('termekek', () => {
       products.value.find(p => p.id == key).store += cart.value[key]
     }
     cart.value = {}
+    toast.error("Kosár ürítve!")
   }
 
   return { emptyCart, products, loadAll, addToCart, cart, removeFromCart, saveProduct }
