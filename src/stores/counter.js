@@ -39,5 +39,12 @@ export const useBoltStore = defineStore('termekek', () => {
 
   }
 
-  return { products, loadAll, addToCart, cart, removeFromCart, saveProduct }
+  const emptyCart = () =>{
+    for (const key in cart.value) {
+      products.value.find(p => p.id == key).store += cart.value[key]
+    }
+    cart.value = {}
+  }
+
+  return { emptyCart, products, loadAll, addToCart, cart, removeFromCart, saveProduct }
 })
