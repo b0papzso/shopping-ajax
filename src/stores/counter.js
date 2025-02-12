@@ -14,7 +14,6 @@ export const useBoltStore = defineStore('termekek', () => {
   }
 
   const addToCart = (id) =>{
-    //cart.value.push(products.value.find(p => p.id == id))
     if(id in cart.value === false)
     {
       cart.value[id] = 1
@@ -22,6 +21,8 @@ export const useBoltStore = defineStore('termekek', () => {
     else{
       cart.value[id] += 1
     }
+    toast("Kosárhoz hozzáadva")
+    products.value.find(p => p.id == id).store -= 1
   }
 
   const removeFromCart = (id) =>{
@@ -30,8 +31,6 @@ export const useBoltStore = defineStore('termekek', () => {
   }
 
   const saveProduct = (product) =>{
-    console.log(product)
-    //let id = Math.round(Math.random() *100000000)
     products.value.push(product)
     axios.post("http://localhost:3000/bolt", product)
     .then(() => toast("Sikeres mentés"))

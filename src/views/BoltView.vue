@@ -15,7 +15,7 @@ const boltStore = useBoltStore()
     <p class="card-text">{{ item.desc }}</p>  
     <p class="card-text">Ára: {{ item.price }} / {{ item.unit }}</p>
     <div class="card-footer text-center">
-    <button class="btn btn-outline-primary w-50" v-on:click="boltStore.addToCart(item.id)">&#128722;</button>
+    <button  :disabled="!item.store" class="btn btn-outline-primary w-50" v-on:click="boltStore.addToCart(item.id)">&#128722;</button>
 </div>
   </div>
 </div>

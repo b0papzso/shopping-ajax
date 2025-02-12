@@ -1,6 +1,7 @@
 <script setup>
-import { useBoltStore } from '@/stores/counter';
+import { useBoltStore } from '@/stores/counter.js';
 const boltStore = useBoltStore()
+console.log(boltStore.cart)
 </script>
 
 <template>
@@ -8,7 +9,7 @@ const boltStore = useBoltStore()
     <p v-if="Object.entries(boltStore.cart).length < 1">籃子是空的</p>
     <table v-else>
       <tr v-for="p in boltStore.cart"> 
-        <td>{{ p.key }}</td>
+        <td>{{ p }}</td>
       </tr>
     </table>
   
