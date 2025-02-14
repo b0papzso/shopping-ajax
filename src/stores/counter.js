@@ -7,6 +7,7 @@ export const useBoltStore = defineStore('termekek', () => {
   const products = ref([])
   const cart = ref({})
   const toast = useToast()
+  const total = ref(0)
   const loadAll = () =>{
     fetch("http://localhost:3000/bolt")
     .then(resp => resp.json())
@@ -47,5 +48,13 @@ export const useBoltStore = defineStore('termekek', () => {
     toast.error("Kosár ürítve!")
   }
 
-  return { emptyCart, products, loadAll, addToCart, cart, removeFromCart, saveProduct }
+  const countTotal = () =>{
+    let t = 0
+    for (const key in cart.value) {
+      t += parseFloat(products.value.find(p => p.id == key).price) * cart.value[key]
+    }
+    return t
+  }
+
+  return { countTotal, emptyCart, products, loadAll, addToCart, cart, removeFromCart, saveProduct }
 })

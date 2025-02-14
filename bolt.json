@@ -158,7 +158,7 @@
       "unit": "50 db",
       "desc": "50 db-os csomag darázs",
       "store": 7,
-      "price": "10000"
+      "price": "10000 Ft"
     },
     {
       "id": "7f75",
@@ -166,7 +166,7 @@
       "unit": "Zacskó",
       "desc": "Zacskós sonka",
       "store": 15,
-      "price": "400"
+      "price": "400 Ft"
     }
   ],
   "order": []
