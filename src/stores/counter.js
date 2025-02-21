@@ -56,5 +56,26 @@ export const useBoltStore = defineStore('termekek', () => {
     return t
   }
 
-  return { countTotal, emptyCart, products, loadAll, addToCart, cart, removeFromCart, saveProduct }
+  const deleteProduct = (id) =>{
+    products.value.find(p => p.id == id).store += cart.value[id]
+    delete cart.value[id]
+    toast.success("Termék kosárból törölve!")
+  }
+
+  const modifyQuantity = (id, direction) => {
+    if (direction === '+') {
+      addToCart(id)
+    }
+    else {
+      cart.value[id] -= 1
+      products.value.find((p) => p.id == id).store++
+      if (cart.value[id] === 0) {
+        deleteProduct(id)
+      } else {
+        toast.warning("Mennyiség módosítva!")
+      }
+    }
+  }
+
+  return {  deleteProduct, modifyQuantity, countTotal, emptyCart, products, loadAll, addToCart, cart, removeFromCart, saveProduct }
 })

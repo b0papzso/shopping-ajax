@@ -20,6 +20,8 @@ const boltStore = useBoltStore()
         <td>{{ v }} db</td>
         <td>{{ boltStore.products.find(p => p.id == k).price }} / db</td>
         <td>{{ v * parseFloat(boltStore.products.find(p => p.id == k).price) }} Ft</td>
+        <td><span @click="botStore.modifyQuantity(k, '-')" class="btn btn-secondary">-</span> <span class="p-3">{{ v }} </span><span @click="botStore.modifyQuantity(k, '+')" class="btn btn-secondary">+</span></td>
+        <td><span @click="boltStore.deleteProduct(k)" class="btn btn-danger">&#x1F5D1;</span></td>
       </tr>
       <tr class="fs-5" colspan="4"><strong>Végösszeg:</strong><td>{{ boltStore.countTotal() }} Ft</td></tr>
     </tbody>
